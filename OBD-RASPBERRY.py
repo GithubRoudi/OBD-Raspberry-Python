@@ -56,7 +56,8 @@ while (True):
 		TimeSinceDtcClearedVal = str(TimeSinceDtcClearedCmd.value)
 		
 #the list can go on to take all commands
-		print("Status: " + StatusVal + ", RPM: " + RPMVal + ", Speed: " + SpeedVal + ", Engine Load: " + EngineLoadVal + ", Barometric Pressure: " + BarmetricPressureVal)
+		print("Status: " + StatusVal + ", RPM: " + RPMVal + ", Speed: " + SpeedVal + ", 
+		      Engine Load: " + EngineLoadVal + ", Barometric Pressure: " + BarmetricPressureVal)
 
 #Request all Error Codes
 		ErrorsCmd = connection.querry(obd.commands.GET_DTC)
@@ -67,8 +68,9 @@ while (True):
 	except Exception as ex:
 		print("Error: " + str(ex))
 #Post Data to DataBase
-	dbc.push_to_db(BarmetricPressureVal, SpeedVal, RPMVal, OilTempVal, HybridBatteryRemainingVal, TimeSinceDtcClearedVal, FuelTypeVal, 
-				   EvapVapPressureVal, DistanceSinceDtcClearedVal, EngineLoadVal, ErrorsVal, Status, push_time())
+	dbc.push_to_db(BarmetricPressureVal, SpeedVal, RPMVal, OilTempVal, HybridBatteryRemainingVal, 
+		       TimeSinceDtcClearedVal, FuelTypeVal,  EvapVapPressureVal, DistanceSinceDtcClearedVal, 
+		       EngineLoadVal, ErrorsVal, Status, push_time())
 #Request data every minute
 	time.sleep(60) 
 # Close the connection
